@@ -257,11 +257,11 @@ export default function App() {
   );
   const [queryResult, setQueryResult] = useState(null);
 
-  // Check if local VS Code Node.js backend is online at http://localhost:4000
+  // Check if local VS Code Node.js backend is online at https://csv-dw-builder.onrender.com
   const checkBackendHealth = async () => {
     setCheckingBackend(true);
     try {
-      const res = await fetch('http://localhost:4000/api/health');
+      const res = await fetch('https://csv-dw-builder.onrender.com/api/health');
       if (res.ok) {
         setBackendOnline(true);
       } else {
@@ -503,7 +503,7 @@ export default function App() {
     setConnTestResult(null);
     try {
       if (backendOnline) {
-        const res = await fetch('http://localhost:4000/api/connections/test', {
+        const res = await fetch('https://csv-dw-builder.onrender.com/api/connections/test', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(connection)
@@ -637,7 +637,7 @@ export default function App() {
     let backendStatusNote = 'Loaded into in-browser engine';
     if (backendOnline && connection.password) {
       try {
-        const res = await fetch('http://localhost:4000/api/warehouse/load', {
+        const res = await fetch('https://csv-dw-builder.onrender.com/api/warehouse/load', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
